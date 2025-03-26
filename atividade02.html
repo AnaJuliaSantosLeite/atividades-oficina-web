@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Esfera</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0099ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #resultados {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Esfera</h1>
+    <div class="container">
+        <label for="raio">Raio da esfera:</label>
+        <input type="number" id="raio" placeholder="Digite o raio">
+        <button onclick="calcular()">Calcular</button>
+        
+        <div id="resultados">
+            <p>Comprimento (C): <span id="comprimento">-</span></p>
+            <p>Área (A): <span id="area">-</span></p>
+            <p>Volume (V): <span id="volume">-</span></p>
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            // Pegar o valor do raio digitado
+            const raio = parseFloat(document.getElementById('raio').value);
+            
+            // Verificar se o valor é válido
+            if (isNaN(raio) || raio <= 0) {
+                alert("Por favor, digite um raio válido!");
+                return;
+            }
+            
+            // Calcular as propriedades
+            const comprimento = 2 * Math.PI * raio;
+            const area = Math.PI * Math.pow(raio, 2);
+            const volume = (3/4) * Math.PI * Math.pow(raio, 3);
+            
+            // Mostrar os resultados na página
+            document.getElementById('comprimento').textContent = comprimento.toFixed(2);
+            document.getElementById('area').textContent = area.toFixed(2);
+            document.getElementById('volume').textContent = volume.toFixed(2);
+        }
+    </script>
+</body>
+</html>
